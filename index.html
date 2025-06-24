@@ -94,14 +94,16 @@
   </footer>
 
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
-<script>
-  const supabase = supabase.createClient(
-    'https://motqggvxplegckxuvujc.supabase.co',
-    'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vdHFnZ3Z4cGxlZ2NreHV2dWpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTY4MjMsImV4cCI6MjA2NTk3MjgyM30.C1DLQis5upgmaPeTXgt-rMztlTeAm5ODKjVC_XhC4-o'
+
+<script type="module">
+  import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js/+esm";
+
+  const supabase = createClient(
+    "https://motqggvxplegckxuvujc.supabase.co",
+    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1vdHFnZ3Z4cGxlZ2NreHV2dWpjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTAzOTY4MjMsImV4cCI6MjA2NTk3MjgyM30.C1DLQis5upgmaPeTXgt-rMztlTeAm5ODKjVC_XhC4-o"
   );
 
-  async function login() {
+  window.login = async function () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const { error } = await supabase.auth.signInWithPassword({ email, password });
@@ -112,7 +114,7 @@
     }
   }
 
-  async function signup() {
+  window.signup = async function () {
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
     const { error } = await supabase.auth.signUp({ email, password });
@@ -125,5 +127,3 @@
   }
 </script>
 </body>
-
-</html>
